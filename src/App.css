@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .App-header {
@@ -10,6 +13,20 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App__main {
+  flex-grow: 1;
+}
+
+.App__retry {
+  color: #333;
+  text-decoration: underline;
+}
+
+.App__footer {
+  background-color: #ddd;
+  padding: 6px;
 }
 
 .App-link {
@@ -74,6 +91,10 @@
   height: 60px;
   border: 1px solid black;
   border-radius: 4px;
+}
+
+.Homepage__app:focus {
+  outline: none;
 }
 
 @keyframes fadeInOpacity {

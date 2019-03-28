@@ -19,8 +19,8 @@ export default function KeyboardButton(props) {
     }
 
     return (
-        <div>
-            <div className="button" role="button" tabIndex={0} onKeyDown={_onKeyDown} onClick={_onClick}>
+        <div >
+            <div className={`button ${props.className}`} role="button" tabIndex={0} onKeyDown={_onKeyDown} onClick={_onClick}>
                 {props.children}
             </div>
             <div className="KeyboardButton__error">
