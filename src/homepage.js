@@ -3,57 +3,24 @@ import KeyboardButton from './KeyboardButton';
 
 function Homepage(props) {
     const onClickOtherApp = () => { };
+
+
+    const renderOtherApps = (appNames) => {
+        return appNames.map((name, i) => {
+            return <KeyboardButton onClick={() => { onClickOtherApp(name) }} className="Homepage__app" key={i}>
+                {name}
+            </KeyboardButton>
+        })
+
+    };
     return (
         <section className="Homepage">
             <div className="Homepage__apps">
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Email
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Reddit
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Facebook
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Twitter
-                 </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Google
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Youtube
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    WebAIM
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Pivotal Tracker
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Online Slots
-                </KeyboardButton>
+                {renderOtherApps(["Email", "Reddit", "Facebook", "Twitter", "Google", "Youtube", "WebAIM", "Pivotal Tracker", "Online Slots"])}
                 <KeyboardButton onClick={props.advance} className="Homepage__app">
                     US Government Alien Threat Reporting & Response
                 </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Online Poker
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Amazon
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Yelp
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Bank
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    PVTL stock price
-                </KeyboardButton>
-                <KeyboardButton onClick={onClickOtherApp} className="Homepage__app">
-                    Kitty Rescue Webcam
-                </KeyboardButton>
+                {renderOtherApps(["Online Poker", "Amazon", "Yelp", "Bank", "PVTL stock price", "Kitty rescue webcam"])}
             </div>
         </section>
     );

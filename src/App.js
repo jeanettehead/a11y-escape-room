@@ -23,7 +23,7 @@ function App(props) {
   else if (steps[stepIndex] === "end") {
     const elapsedSeconds = (new Date().getTime() - startTime)/1000;
     content = <div>
-      `You completed the challenge in ${elapsedSeconds} seconds` 
+      You completed the challenge in {elapsedSeconds} seconds 
       <KeyboardButton className="App__retry" onClick={() => setStepIndex(0)}>Try again</KeyboardButton>
     </div>;
   }
