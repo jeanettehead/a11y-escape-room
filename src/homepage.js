@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import KeyboardButton from './KeyboardButton';
 
 function Homepage(props) {
-    const onClickOtherApp = () => { };
+    const [openApp, setOpenApp] = useState(null);
 
+    const onClickOtherApp = (name) => {
+        setOpenApp(name);
+     };
 
+    const closeOtherApp = () => {
+        setOpenApp(null);
+     };
     const renderOtherApps = (appNames) => {
         return appNames.map((name, i) => {
             return <KeyboardButton onClick={() => { onClickOtherApp(name) }} className="Homepage__app" key={i}>
                 {name}
             </KeyboardButton>
         })
-
     };
+
+    if(openApp !== null) {
+        return (
+            <section className="homepage">
+                <h1>{openApp}</h1>
+                <KeyboardButton className="Homepage__openAppBack" onClick={closeOtherApp}>
+                ← Back
+                </KeyboardButton>
+            </section>
+        )
+    }
     return (
         <section className="Homepage">
             <div className="Homepage__apps">

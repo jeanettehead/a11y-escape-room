@@ -6,7 +6,7 @@ import KeyboardButton from './KeyboardButton';
 
 function App(props) {
   const steps = ["intro", "homepage", "end"];
-  const [stepIndex, setStepIndex] = useState(0);
+  const [stepIndex, setStepIndex] = useState(1);
   const [startTime] = useState(new Date().getTime());
 
   const advance = () => {
