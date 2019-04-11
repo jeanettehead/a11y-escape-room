@@ -6,11 +6,11 @@ function Homepage(props) {
 
     const onClickOtherApp = (name) => {
         setOpenApp(name);
-     };
+    };
 
     const closeOtherApp = () => {
         setOpenApp(null);
-     };
+    };
     const renderOtherApps = (appNames) => {
         return appNames.map((name, i) => {
             return <KeyboardButton onClick={() => { onClickOtherApp(name) }} className="Homepage__app" key={i}>
@@ -19,24 +19,28 @@ function Homepage(props) {
         })
     };
 
-    if(openApp !== null) {
+    if (openApp !== null) {
         return (
             <section className="homepage">
                 <h1>{openApp}</h1>
                 <KeyboardButton className="Homepage__openAppBack" onClick={closeOtherApp}>
-                ← Back
+                    ← Back
                 </KeyboardButton>
             </section>
         )
     }
     return (
         <section className="Homepage">
-            <div className="Homepage__apps">
-                {renderOtherApps(["Email", "Reddit", "Facebook", "Twitter", "Google", "Youtube", "WebAIM", "Pivotal Tracker", "Online Slots"])}
-                <KeyboardButton onClick={props.advance} className="Homepage__app">
-                    US Government Alien Threat Reporting & Response
+            The computer's awake and you're looking at the homepage in his internet browser.
+            <div className="Homepage__desktop">
+                <div className="Homepage__urlBar">🔎 |</div>
+                <div className="Homepage__apps">
+                    {renderOtherApps(["Email", "Reddit", "Facebook", "Twitter", "Google", "Youtube", "WebAIM", "Pivotal Tracker", "Online Slots"])}
+                    <KeyboardButton onClick={props.advance} className="Homepage__app">
+                        US Government Alien Threat Reporting & Response
                 </KeyboardButton>
-                {renderOtherApps(["Online Poker", "Amazon", "Yelp", "Bank", "PVTL stock price", "Kitty rescue webcam"])}
+                    {renderOtherApps(["Online Poker", "Amazon", "Yelp", "Bank", "PVTL stock price", "Kitty rescue webcam"])}
+                </div>
             </div>
         </section>
     );

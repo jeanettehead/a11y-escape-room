@@ -2,15 +2,49 @@ import React, { useState } from 'react';
 import './App.css';
 import Intro from './intro';
 import Homepage from './homepage';
+import Govpage from './govpage';
 import KeyboardButton from './KeyboardButton';
 
 function App(props) {
-  const steps = ["intro", "homepage", "end"];
-  const [stepIndex, setStepIndex] = useState(1);
+  const steps = ["intro", "homepage", "govpage", "end"];
+  const hints = {
+    "intro": ["Tab to the button and press enter"],
+    "govpage": ["You will need to use a screenreader to click the button"],
+    "homepage": [
+      <span data-index={0}>There is no <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-visible.html">focus ring</a> on this page</span>,
+      "You need to visit the US Government Alien Threat Reporting website",
+    ],
+    "end": ["No you don't"],
+  }
+  const [stepIndex, setStepIndex] = useState(0);
   const [startTime] = useState(new Date().getTime());
+  const [hint, setHint] = useState(null);
+  const [hintCount, setHintCount] = useState(0);
 
   const advance = () => {
     setStepIndex(stepIndex + 1);
+    setHint(null)
+  }
+
+  //TODO make hints its own entity 
+  const showHint = () => {
+    const pageHints = hints[steps[stepIndex]];
+    if (hint === null) {
+      setHint(pageHints[0]);
+    } else {
+      let hintIndex;
+      if (typeof hint === "object") {
+        hintIndex = hint.props["data-index"]
+      } else {
+        hintIndex = pageHints.indexOf(hint);
+      }
+      const hasNewHint = (hintIndex !== pageHints.length - 1); 
+      const nextHint = hasNewHint ? hintIndex + 1 : hintIndex;
+      if(hasNewHint) {
+          setHintCount(hintCount + 1);
+      }
+      setHint(pageHints[nextHint]);
+    }
   }
 
   let content;
@@ -20,10 +54,13 @@ function App(props) {
   else if (steps[stepIndex] === "homepage") {
     content = <Homepage advance={advance} />
   }
+  else if (steps[stepIndex] === "govpage") {
+    content = <Govpage advance={advance} />
+  }
   else if (steps[stepIndex] === "end") {
-    const elapsedSeconds = (new Date().getTime() - startTime)/1000;
+    const elapsedSeconds = (new Date().getTime() - startTime) / 1000;
     content = <div>
-      You completed the challenge in {elapsedSeconds} seconds 
+      Good job! You completed the challenge in {elapsedSeconds} seconds.
       <KeyboardButton className="App__retry" onClick={() => setStepIndex(0)}>Try again</KeyboardButton>
     </div>;
   }
@@ -34,12 +71,18 @@ function App(props) {
         Alien Escape
         </header>
       <main className="App__main">
-
         {content}
-
+        <div className="App__hint--text">
+          {hint}
+        </div>
       </main>
       <footer className="App__footer">
-        <a href="https://github.com/jeanettehead/a11y-escape-room">See this project on GitHub</a>
+        <div>
+          <button className="App__hint" onClick={showHint}>I need a hint</button>
+        </div>
+        <div>
+          <a href="https://github.com/jeanettehead/a11y-escape-room">See this project on GitHub</a>
+        </div>
       </footer>
     </div>
   );
