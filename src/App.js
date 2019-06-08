@@ -3,16 +3,21 @@ import './App.css';
 import Intro from './intro';
 import Homepage from './homepage';
 import Govpage from './govpage';
+import Helppage from './helppage';
 import KeyboardButton from './KeyboardButton';
 
 function App(props) {
-  const steps = ["intro", "homepage", "govpage", "end"];
+  const steps = ["intro", "homepage", "govpage", "helppage", "end"];
   const hints = {
     "intro": ["Tab to the button and press enter"],
-    "govpage": ["You will need to use a screenreader to click the button"],
-    "homepage": [
+    "helppage": ["You will need to use a screenreader to click the button"],
+    "govpage": [
+      "You need to 'request assistance'",
       <span data-index={0}>There is no <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-visible.html">focus ring</a> on this page</span>,
+    ],
+    "homepage": [
       "You need to visit the US Government Alien Threat Reporting website",
+      "Use the tab key to navigate",
     ],
     "end": ["No you don't"],
   }
@@ -38,10 +43,10 @@ function App(props) {
       } else {
         hintIndex = pageHints.indexOf(hint);
       }
-      const hasNewHint = (hintIndex !== pageHints.length - 1); 
+      const hasNewHint = (hintIndex !== pageHints.length - 1);
       const nextHint = hasNewHint ? hintIndex + 1 : hintIndex;
-      if(hasNewHint) {
-          setHintCount(hintCount + 1);
+      if (hasNewHint) {
+        setHintCount(hintCount + 1);
       }
       setHint(pageHints[nextHint]);
     }
@@ -56,6 +61,9 @@ function App(props) {
   }
   else if (steps[stepIndex] === "govpage") {
     content = <Govpage advance={advance} />
+  }
+  else if (steps[stepIndex] === "helppage") {
+    content = <Helppage advance={advance} />
   }
   else if (steps[stepIndex] === "end") {
     const elapsedSeconds = (new Date().getTime() - startTime) / 1000;

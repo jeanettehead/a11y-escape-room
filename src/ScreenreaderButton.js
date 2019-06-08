@@ -13,7 +13,7 @@ export default function ScreenreaderButton(props) {
     return (
         <div >
             <div className={`ScreenreaderButton ${props.className}`}>
-                <div className="ScreenreaderButton__cover" onClick={_onClick}>{props.children}</div>
+                <div className="ScreenreaderButton__cover" aria-hidden={true} onClick={_onClick}>{props.children}</div>
                 <button className="ScreenreaderButton__hidden" onClick={props.onClick} tabIndex={-1}>{props.children}</button>
             </div>
             <div className="KeyboardButton__error">

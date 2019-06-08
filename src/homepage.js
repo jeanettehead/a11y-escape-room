@@ -33,7 +33,7 @@ function Homepage(props) {
         <section className="Homepage">
             The computer's awake and you're looking at the homepage in his internet browser.
             <div className="Homepage__desktop">
-                <div className="Homepage__urlBar">🔎 |</div>
+                <input className="Homepage__urlBar" aria-label="Search the internet" / >
                 <div className="Homepage__apps">
                     {renderOtherApps(["Email", "Reddit", "Facebook", "Twitter", "Google", "Youtube", "WebAIM", "Pivotal Tracker", "Online Slots"])}
                     <KeyboardButton onClick={props.advance} className="Homepage__app">

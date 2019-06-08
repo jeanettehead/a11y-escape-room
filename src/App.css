@@ -110,6 +110,7 @@
   text-align: left;
   padding-left: 6px;
   padding-top: 6px;
+  width: 100%;
 }
 
 .Homepage__app {
@@ -121,22 +122,56 @@
   border-radius: 4px;
 }
 
-.Homepage__app:focus {
+.Govpage {
+  margin: 0 8em;
+  margin-bottom: 100px;
+}
+
+.Govpage__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.Govpage__link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.Govpage__link:focus {
   outline: none;
 }
 
-.Govpage {
+.Govpage__nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.Govpage__footer {
+  background-color: #ccc;
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+}
+
+.helppage {
   flex-grow: 1;
   display: flex;
   align-items: center;
   flex-direction:column;
 }
 
-.Govpage__paragraph {
-  margin-bottom: 20px;
-  max-width: 80vw;
+.Govpage__paragraph,
+.helppage__paragraph {
+  margin: 0px auto 50px auto;
+  max-width: 70vw;
   display: flex;
   justify-content: center;
+  align-self: center;
 
 
 }
