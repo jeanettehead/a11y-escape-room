@@ -20,7 +20,7 @@ export default function Helppage({ advance }) {
         <div className="helppage__paragraph">
           Please fill out this form with respect to the person who needs rescue
         </div>
-        <form>
+        <form onSubmit={(e) => {console.log("form submit"); e.preventDefault()}}>
           <label htmlFor="first">First Name</label>
           <input ref={first} id="first" type="text" required /> 
 
@@ -29,6 +29,8 @@ export default function Helppage({ advance }) {
 
           <label htmlFor="ssn">Social Security Number</label>
           <input ref={ssn} id="ssn" type="text" required /> 
+
+          <input type="submit" className="helppage__hiddenSubmit" tabIndex={-1} aria-hidden="true"/>
 
         <ScreenreaderButton onClick={() => formComplete() && advance()}>
             Submit

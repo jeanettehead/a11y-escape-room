@@ -213,3 +213,8 @@ from {
   color: #333;
   font-size: 14px;
 }
+
+.helppage__hiddenSubmit {
+  position: absolute;
+  left: -2000px;
+}

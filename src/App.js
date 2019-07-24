@@ -13,7 +13,7 @@ function App(props) {
     "helppage": ["You will need to use a screenreader to click the button"],
     "govpage": [
       "You need to 'request assistance'",
-      <span data-index={0}>There is no <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-visible.html">focus ring</a> on this page</span>,
+      <span data-index={0}>There is no <a target="_blank" href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-visible.html">focus ring</a> on this page</span>,
     ],
     "homepage": [
       "You need to visit the US Government Alien Threat Reporting website",
@@ -89,7 +89,7 @@ function App(props) {
           <button className="App__hint" onClick={showHint}>I need a hint</button>
         </div>
         <div>
-          <a href="https://github.com/jeanettehead/a11y-escape-room">See this project on GitHub</a>
+          <a target="_blank" href="https://github.com/jeanettehead/a11y-escape-room">See this project on GitHub</a>
         </div>
       </footer>
     </div>
