@@ -1,15 +1,3 @@
-# 🚀 Welcome to your new awesome project!
+Still a work in progress, this escape room will test and challenge your knowledge of navigating the web without a mouse.
 
-This project has been created using **webpack scaffold**, you can now run
-
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+[Try it out!](https://www.iamjea.net/a11y-escape/index.html)
